@@ -1,0 +1,24 @@
+label {
+  color: rgba(255, 255, 255, .7);
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 50% 50%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+input {
+  grid-column: 2/2;
+  grid-row: 1;
+}
+
+.controls {
+  border-radius: 2%;
+  box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, .5);
+  background-color: rgba(73, 73, 73, .9);
+}
+
+* {
+  padding: 2px;
+  margin: 1px;
+}

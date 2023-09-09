@@ -1,0 +1,14 @@
+<div
+  *ngIf="grid$ | async as gridInfo"
+  class="grid"
+  [ngStyle]="{
+    'grid-template-columns': getGridColums(gridInfo.columns),
+    'grid-template-rows': getGridRows(gridInfo.rows)
+  }"
+>
+    <div
+    *ngFor="let cell of gridInfo.grid"
+      class="cell"
+      [ngClass]="{ alive: cell }"
+    ></div>
+</div>

@@ -1,0 +1,53 @@
+<div class="controls">
+  <form [formGroup]="controls" (ngSubmit)="onStart()">
+    <label for="rows"
+      >Rows:
+      <app-form-field>
+        <input appShowError type="number" id="rows" formControlName="rows" />
+      </app-form-field>
+    </label>
+    <label for="columns"
+      >Columns:
+      <app-form-field>
+        <input
+          appShowError
+          type="number"
+          id="columns"
+          formControlName="columns"
+        />
+      </app-form-field>
+    </label>
+    <label for="population-density"
+      >Population density:
+      <app-form-field>
+        <input
+          appShowError
+          type="number"
+          id="populaion-density"
+          formControlName="populationDensity"
+        />
+      </app-form-field>
+    </label>
+    <label for="refresh-rate"
+      >Refresh rate (ms):
+      <app-form-field>
+        <input
+          appShowError
+          type="number"
+          id="refresh-rate"
+          formControlName="refreshRate"
+        />
+      </app-form-field>
+    </label>
+    <button type="submit" [disabled]="controls.status !== 'VALID'">
+      Set values
+    </button>
+    <button
+      type="button"
+      *ngIf="gridService.executing$ | async as executionStatus"
+      (click)="changeExecutionStatus(executionStatus)"
+    >
+      {{ executionStatus === ExecutionState.RUNNING ? "Pause" : "Resume" }}
+    </button>
+  </form>
+</div>

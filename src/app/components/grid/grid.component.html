@@ -1,5 +1,5 @@
 <div
-  *ngIf="grid$ | async as gridInfo"
+*ngIf="grid$ | async as gridInfo"
   class="grid"
   [ngStyle]="{
     'grid-template-columns': getGridColums(gridInfo.columns),
@@ -7,8 +7,8 @@
   }"
 >
     <div
-    *ngFor="let cell of gridInfo.grid"
+    *ngFor="let cell of indexArray(gridInfo.rows, gridInfo.columns)"
       class="cell"
-      [ngClass]="{ alive: cell }"
+      [ngClass]="{ alive: gridInfo.grid[cell] }"
     ></div>
 </div>

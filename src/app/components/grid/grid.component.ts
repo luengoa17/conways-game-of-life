@@ -30,4 +30,11 @@ export class GridComponent {
     return 100 / cols + '%';
   }
 
+  indexArray(rows: number, cols: number): number[] {
+    return Array(rows * cols)
+      .fill(0)
+      .map((_, i) => i);
+  }
+
+
 }

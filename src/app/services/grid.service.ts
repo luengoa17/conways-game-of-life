@@ -43,6 +43,7 @@ export class GridService {
   }
 
   setGridParameters(gridParameters: GridParameters) {
+    this.lastGrid = undefined;
     this.gridParameters$.next(gridParameters);
     this.executing$.next(ExecutionState.RUNNING);
   }
@@ -52,7 +53,7 @@ export class GridService {
     this.gridParameters$,
   ]).pipe(
     switchMap(([executing, gridParameters]) => {
-      console.log(executing);
+
       if (executing !== ExecutionState.RUNNING) {
         return of(this.lastGrid);
       }
@@ -73,7 +74,7 @@ export class GridService {
       gridParameters.rows * gridParameters.columns
     );
     for (let i = 0; i < grid.length; i++) {
-      grid[i] = Math.random() > gridParameters.populationDensity;
+      grid[i] = Math.random() < gridParameters.populationDensity;
     }
     return {
       rows: gridParameters.rows,
